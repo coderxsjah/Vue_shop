@@ -4,7 +4,7 @@
         <div class="login-box">
             <!--            头像区域-->
             <div class="head-box">
-                <img src="../../assets/logo.png"/>
+                <img src="../../assets/icons/logo.png"/>
             </div>
             <!--            表单区域-->
             <el-form class="form" ref="loginFormRef" :model="loginForm" :rules="loginRules">
