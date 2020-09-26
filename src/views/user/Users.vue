@@ -71,7 +71,7 @@
                         </el-tooltip>
 <!--                           分配角色按钮-->
                         <el-tooltip class="item" effect="dark" content="分配角色" placement="top" :enterable="false">
-                            <el-button type="warning" icon="el-icon-setting" size="mini"></el-button>
+                            <el-button type="warning" icon="el-icon-setting" size="mini" @click="showSetRoleDialog(scope.row)"></el-button>
                         </el-tooltip>
                     </template>
                 </el-table-column>
@@ -126,7 +126,29 @@
                     <el-button type="primary" @click="sureEdit">确 定</el-button>
                 </span>
             </el-dialog>
-
+            <!--            f分配角色的页面-->
+            <el-dialog title="分配角色"
+                       :visible.sync="setRoleDialogVisible"
+                       width="50%">
+                <!--                内容主体-->
+                <p>当前的用户：{{this.userInfo.username}}</p>
+                <p>当前的角色：{{this.userInfo.role_name}}</p>
+                <p>分配新角色：
+                    <el-select v-model="selectedRole" placeholder="请选择">
+                        <el-option
+                                v-for="item in rolesList"
+                                :key="item.id"
+                                :label="item.roleName"
+                                :value="item.id">
+                        </el-option>
+                    </el-select>
+                </p>
+                <!--               底部区域-->
+                <span slot="footer" class="dialog-footer">
+                    <el-button @click="cancelSetRole">取 消</el-button>
+                    <el-button type="primary" @click="sureSetRole">确 定</el-button>
+                </span>
+            </el-dialog>
 <!--                分页-->
             <el-pagination
                     @size-change="handleSizeChange"
@@ -212,7 +234,11 @@
             {required:true,message:"请输入邮箱",trigger:'blur'},
             {validator:checkEmail,trigger: 'blur'}
             ]
-        }
+        },
+        setRoleDialogVisible:false,//展示分配角色的dialog
+        userInfo:{},//当前的用户信息
+        rolesList:[],//全部角色列表
+        selectedRole:'',//被选中的角色
       }
     },
     created() {
@@ -336,6 +362,35 @@
             message: '已取消删除'
           });
         });
+      },
+      //展示分配角色按钮
+      async showSetRoleDialog(userInfo){
+        this.userInfo = userInfo;
+        //获取全部的角色列表
+        const {data:res} = await this.$http.get("roles");
+        if(res.meta.status !== 200){
+          return this.$message.error("获取权限列表失败！");
+        }
+        this.rolesList = res.data;
+        //console.log(res.data);
+        this.setRoleDialogVisible = true;
+      },
+      //取消分配juese
+      cancelSetRole(){
+        this.setRoleDialogVisible = false;
+      },
+      //确认分配角色
+      async sureSetRole(){
+        if(!this.selectedRole){
+          return this.$message.warning("请选择角色");
+        }
+        const {data:res} = await this.$http.put(`users/${this.userInfo.id}/role`,{rid:this.selectedRole});
+        if(res.meta.status !== 200){
+          return this.$message.error("分配角色失败！");
+        }
+        this.$message.success("分配角色成功！")
+        this.getUsersList();
+        this.setRoleDialogVisible = false;
       }
     }
   }
