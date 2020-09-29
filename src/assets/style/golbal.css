@@ -7,3 +7,6 @@ html,body{
     padding: 0;
     min-width: 1366px;
 }
+.el-cascader-panel{
+    height: 200px;
+}

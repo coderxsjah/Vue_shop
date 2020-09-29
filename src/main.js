@@ -7,6 +7,11 @@ import './assets/style/icon.css'
 //导入全局样式
 import './assets/style/golbal.css'
 import axios from 'axios'
+//导入vue-table-with-tree-grid
+import TreeTable from "vue-table-with-tree-grid"
+Vue.component("TreeTable",TreeTable);
+
+//配置axios基本属性
 axios.defaults.baseURL = "http://127.0.0.1:8888/api/private/v1/"
 axios.interceptors.request.use(config=>{
   const token = window.sessionStorage.getItem("token");
