@@ -10,3 +10,6 @@ html,body{
 .el-cascader-panel{
     height: 200px;
 }
+.el-tag{
+    margin-bottom: 5px;
+}

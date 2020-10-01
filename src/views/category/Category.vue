@@ -65,9 +65,9 @@
             </el-form>
             <!--               底部区域-->
             <span slot="footer" class="dialog-footer">
-                    <el-button @click="cancelAddCate">取 消</el-button>
-                    <el-button type="primary" @click="sureAddCate">确 定</el-button>
-                </span>
+                <el-button @click="cancelAddCate">取 消</el-button>
+                <el-button type="primary" @click="sureAddCate">确 定</el-button>
+            </span>
         </el-dialog>
 
     </div>
