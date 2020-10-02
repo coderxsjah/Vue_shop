@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import { Button, Form, FormItem, Input,Menu,Submenu,MenuItem,MenuItemGroup,
 Breadcrumb,BreadcrumbItem,Card,Row,Col,Table,TableColumn,Switch,Tooltip,Pagination,Dialog,Tag,Icon,
-Tree,Select,Option,Cascader,Alert,Tabs,TabPane,Steps,Step,Checkbox,CheckboxGroup,Upload} from "element-ui";
+Tree,Select,Option,Cascader,Alert,Tabs,TabPane,Steps,Step,Checkbox,CheckboxGroup,Upload,
+Timeline,TimelineItem} from "element-ui";
 //导入布局容器
 import {Container,Header,Aside,Main} from "element-ui";
 //导入消息弹框提示
@@ -44,6 +45,8 @@ Vue.use(Step)
 Vue.use(Checkbox)
 Vue.use(CheckboxGroup)
 Vue.use(Upload)
+Vue.use(TimelineItem)
+Vue.use(Timeline)
 
 Vue.prototype.$message = Message
 Vue.prototype.$confirm = MessageBox.confirm
