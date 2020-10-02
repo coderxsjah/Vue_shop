@@ -11,6 +11,7 @@ import Category from "../views/category/Category";
 import Params from "../views/params/Params";
 import Orders from "../views/orders/Orders";
 import Reports from "../views/reports/Reports";
+import AddGoods from "../views/addGoods/AddGoods";
 
 
 Vue.use(VueRouter)
@@ -65,6 +66,10 @@ const routes = [
         path:"/reports",
         component:Reports,
       },
+      {
+        path: "/goods/add",
+        component: AddGoods,
+      }
     ]
   }
 ]

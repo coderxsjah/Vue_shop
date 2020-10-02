@@ -13,3 +13,12 @@ html,body{
 .el-tag{
     margin-bottom: 5px;
 }
+.el-card{
+    margin-top: 15px;
+}
+.el-button{
+    margin-left: 5px;
+}
+.ql-container{
+    min-height: 300px;
+}
