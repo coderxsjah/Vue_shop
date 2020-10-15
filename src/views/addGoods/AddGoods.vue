@@ -44,9 +44,9 @@
                     </el-tab-pane>
 <!--                    商品动态参数-->
                     <el-tab-pane label="商品参数" name="1">
-                        <el-form-item :label="item.attr_name" v-for="item in manyTableData" >
+                        <el-form-item :label="item.attr_name" v-for="(item,index) in manyTableData" :key="index">
                             <el-checkbox-group v-model="item.attr_vals">
-                                <el-checkbox :label="val" v-for="val in item.attr_vals" border></el-checkbox>
+                                <el-checkbox :label="val" v-for="val in item.attr_vals" :key="val" border></el-checkbox>
                             </el-checkbox-group>
                         </el-form-item>
                     </el-tab-pane>

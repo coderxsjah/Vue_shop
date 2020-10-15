@@ -1,17 +1,17 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Login from '../views/login/Login'
-import Home from "../views/home/Home";
-import Welcome from "../views/welcome/Welcome";
-import Users from "../views/user/Users";
-import Roles from "../views/role/Roles";
-import Rights from "../views/right/Rights";
-import Goods from "../views/goods/Goods";
-import Category from "../views/category/Category";
-import Params from "../views/params/Params";
-import Orders from "../views/orders/Orders";
-import Reports from "../views/reports/Reports";
-import AddGoods from "../views/addGoods/AddGoods";
+// import Login from '../views/login/Login'
+// import Home from "../views/home/Home";
+// import Welcome from "../views/welcome/Welcome";
+// import Users from "../views/user/Users";
+// import Roles from "../views/role/Roles";
+// import Rights from "../views/right/Rights";
+// import Goods from "../views/goods/Goods";
+// import Category from "../views/category/Category";
+// import Params from "../views/params/Params";
+// import Orders from "../views/orders/Orders";
+// import Reports from "../views/reports/Reports";
+// import AddGoods from "../views/addGoods/AddGoods";
 
 
 Vue.use(VueRouter)
@@ -23,52 +23,52 @@ const routes = [
   },
   {
     path: "/login",
-    component: Login
+    component: ()=>import('../views/login/Login')
   },
   {
     path: "/home",
-    component: Home,
+    component: ()=>import('../views/home/Home'),
     redirect: "/welcome",
     children:[
       {
         path:"/welcome",
-        component:Welcome,
+        component:()=>import('../views/welcome/Welcome'),
       },
       {
         path:"/users",
-        component:Users,
+        component:()=>import("../views/user/Users"),
       },
       {
         path:"/params",
-        component:Params,
+        component:()=>import('../views/params/Params'),
       },
       {
         path:"/rights",
-        component:Rights,
+        component:()=>import('../views/right/Rights')
       },
       {
         path:"/roles",
-        component:Roles,
+        component:()=>import('../views/role/Roles')
       },
       {
         path:"/goods",
-        component:Goods,
+        component:()=>import('../views/goods/Goods'),
       },
       {
         path:"/categories",
-        component:Category,
+        component:()=>import('../views/category/Category'),
       },
       {
         path:"/orders",
-        component:Orders,
+        component:()=>import('../views/orders/Orders'),
       },
       {
         path:"/reports",
-        component:Reports,
+        component:()=>import('../views/reports/Reports'),
       },
       {
         path: "/goods/add",
-        component: AddGoods,
+        component: ()=>import('../views/addGoods/AddGoods'),
       }
     ]
   }
